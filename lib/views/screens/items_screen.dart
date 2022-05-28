@@ -8,9 +8,29 @@ class ItemsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context, index) => ProductsItem(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    hintText: 'Search by product Name',
+                    suffixIcon: Icon(Icons.search),
+                  ),
+                  // controller: _passwordcontroller,
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.69,
+                child: ListView.builder(
+                  itemCount: 20,
+                  itemBuilder: (context, index) => ProductsItem(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
